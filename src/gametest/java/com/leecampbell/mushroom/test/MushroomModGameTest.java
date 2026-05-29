@@ -3,6 +3,7 @@ package com.leecampbell.mushroom.test;
 import com.leecampbell.mushroom.ModItems;
 import com.leecampbell.mushroom.MushroomMod;
 import com.leecampbell.mushroom.MushroomPowerManager;
+import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.gametest.v1.FabricGameTest;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -78,6 +79,33 @@ public class MushroomModGameTest implements FabricGameTest {
         double value = scaleAttr.getValue();
         if (value > 2.1) {
             helper.fail("Scale modifier is stacking: expected ~2.0 (base 1.0 * (1 + 1.0)) but got " + value);
+        }
+        helper.succeed();
+    }
+
+    @GameTest(template = FabricGameTest.EMPTY_STRUCTURE)
+    public void damagingPoweredPlayerRemovesPower(GameTestHelper helper) {
+        ServerPlayer player = helper.makeMockServerPlayerInLevel();
+        MushroomPowerManager.applyPower(player);
+        if (!MushroomPowerManager.hasPower(player)) {
+            helper.fail("Expected hasPower to be true before damage");
+        }
+        ServerLivingEntityEvents.AFTER_DAMAGE.invoker().afterDamage(player, helper.getLevel().damageSources().generic(), 5.0f, 5.0f, false);
+        if (MushroomPowerManager.hasPower(player)) {
+            helper.fail("Expected power to be removed after AFTER_DAMAGE event fires with damage > 0");
+        }
+        helper.succeed();
+    }
+
+    @GameTest(template = FabricGameTest.EMPTY_STRUCTURE)
+    public void damagingNonPoweredPlayerDoesNothing(GameTestHelper helper) {
+        ServerPlayer player = helper.makeMockServerPlayerInLevel();
+        if (MushroomPowerManager.hasPower(player)) {
+            helper.fail("Expected hasPower to be false before damage");
+        }
+        ServerLivingEntityEvents.AFTER_DAMAGE.invoker().afterDamage(player, helper.getLevel().damageSources().generic(), 5.0f, 5.0f, false);
+        if (MushroomPowerManager.hasPower(player)) {
+            helper.fail("Expected hasPower to remain false after AFTER_DAMAGE event on non-powered player");
         }
         helper.succeed();
     }
