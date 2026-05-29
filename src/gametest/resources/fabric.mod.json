@@ -1,0 +1,20 @@
+{
+	"schemaVersion": 1,
+	"id": "mushroom-mod-test",
+	"version": "1.0.0",
+	"name": "Power Mushroom Mod - GameTests",
+	"description": "Automated GameTest suite for the Power Mushroom Mod.",
+	"license": "MIT",
+	"environment": "*",
+	"entrypoints": {
+		"fabric-gametest": [
+			"com.leecampbell.mushroom.test.MushroomModGameTest"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.2",
+		"minecraft": "~1.21.4",
+		"java": ">=21",
+		"mushroom-mod": "*"
+	}
+}
