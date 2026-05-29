@@ -43,10 +43,10 @@ Father-son team building their first Minecraft mod. Goal: a custom mushroom food
 
 ## Task 3: Item Assets (Texture, Model, Language)
 
-- [ ] **3.1** Create `src/main/resources/assets/mushroom-mod/models/item/power_mushroom.json` — standard `item/generated` model
-- [ ] **3.2** Create `src/main/resources/assets/mushroom-mod/textures/item/power_mushroom.png` — 16x16 pixel art mushroom
-- [ ] **3.3** Create `src/main/resources/assets/mushroom-mod/lang/en_us.json` — `"item.mushroom-mod.power_mushroom": "Power Mushroom"`
-- [ ] **3.4** Create `src/main/resources/assets/mushroom-mod/icon.png` — simple mod icon
+- [x] **3.1** Create `src/main/resources/assets/mushroom-mod/models/item/power_mushroom.json` — standard `item/generated` model
+- [x] **3.2** Create `src/main/resources/assets/mushroom-mod/textures/item/power_mushroom.png` — 16x16 pixel art mushroom
+- [x] **3.3** Create `src/main/resources/assets/mushroom-mod/lang/en_us.json` — `"item.mushroom-mod.power_mushroom": "Power Mushroom"`
+- [x] **3.4** Create `src/main/resources/assets/mushroom-mod/icon.png` — simple mod icon
 
 **Verify:** `./gradlew build` passes. (Asset correctness is visual — verified manually on host later.)
 
