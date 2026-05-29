@@ -11,6 +11,7 @@ public class MushroomMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        ModItems.initialize();
         LOGGER.info("Power Mushroom Mod initialized!");
     }
 }
