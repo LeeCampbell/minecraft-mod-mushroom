@@ -1,0 +1,9 @@
+services:
+  claude:
+    build: .
+    environment:
+      - CLAUDE_CODE_OAUTH_TOKEN=${CLAUDE_CODE_OAUTH_TOKEN}
+      - GH_TOKEN=${GH_TOKEN}
+      - TIMEOUT=${TIMEOUT:-900}
+    volumes:
+      - .:/workspace
