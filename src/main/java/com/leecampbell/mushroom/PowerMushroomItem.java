@@ -1,5 +1,6 @@
 package com.leecampbell.mushroom;
 
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -14,6 +15,9 @@ public class PowerMushroomItem extends Item {
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity user) {
         MushroomMod.LOGGER.info("Power Mushroom consumed by {}", user.getName().getString());
+        if (user instanceof ServerPlayer serverPlayer) {
+            MushroomPowerManager.applyPower(serverPlayer);
+        }
         return super.finishUsingItem(stack, level, user);
     }
 }
