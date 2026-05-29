@@ -54,7 +54,7 @@ Father-son team building their first Minecraft mod. Goal: a custom mushroom food
 
 ## Task 4: Power-Up Effect System
 
-- [ ] **4.1** Create `MushroomPowerManager.java` with:
+- [x] **4.1** Create `MushroomPowerManager.java` with:
   - `applyPower(ServerPlayer)` — removes existing modifiers first, then applies:
     - Scale: `ADD_MULTIPLIED_BASE` value `1.0` (doubles size)
     - Attack Damage: `ADD_VALUE` value `10.0` (big damage boost)
@@ -63,8 +63,8 @@ Father-son team building their first Minecraft mod. Goal: a custom mushroom food
   - `hasPower(ServerPlayer)` — checks if scale modifier is present
   - Uses unique `ResourceLocation` IDs per modifier (e.g. `mushroom-mod:power_mushroom_scale`)
   - Uses `addPermanentModifier` for persistence across save/load
-- [ ] **4.2** Wire `PowerMushroomItem.finishUsingItem` to call `MushroomPowerManager.applyPower()`
-- [ ] **4.3** Add GameTests:
+- [x] **4.2** Wire `PowerMushroomItem.finishUsingItem` to call `MushroomPowerManager.applyPower()`
+- [x] **4.3** Add GameTests:
   - Test that `applyPower` adds the scale modifier (verify via `getAttribute`)
   - Test that `removePower` removes modifiers
   - Test that `hasPower` returns correct state
