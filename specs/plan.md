@@ -88,9 +88,9 @@ Father-son team building their first Minecraft mod. Goal: a custom mushroom food
 
 ## Task 6: Polish & Player Feedback
 
-- [ ] **6.1** Add chat message on power activation: "Power Mushroom activated!"
-- [ ] **6.2** Add chat message on power removal (hit): "Your mushroom power fades!"
-- [ ] **6.3** Review and tweak attribute values for fun gameplay
+- [x] **6.1** Add chat message on power activation: "Power Mushroom activated!"
+- [x] **6.2** Add chat message on power removal (hit): "Your mushroom power fades!"
+- [x] **6.3** Review and tweak attribute values for fun gameplay
 
 **Verify:** `./gradlew build` passes. Manual playtesting on host for feel.
 
