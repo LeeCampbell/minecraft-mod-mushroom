@@ -32,10 +32,10 @@ Father-son team building their first Minecraft mod. Goal: a custom mushroom food
 
 ## Task 2: Register the Power Mushroom Item
 
-- [ ] **2.1** Create `ModItems.java` — item registration using `ResourceKey` pattern (1.21.2+ style), registers `POWER_MUSHROOM` with food properties (nutrition 4, alwaysEdible, stacksTo 16), added to Food & Drinks creative tab
-- [ ] **2.2** Create `PowerMushroomItem.java` — extends `Item`, overrides `finishUsingItem` (skeleton that logs for now)
-- [ ] **2.3** Call `ModItems.initialize()` from `MushroomMod.onInitialize()`
-- [ ] **2.4** Add GameTest: verify `ModItems.POWER_MUSHROOM` is registered in the item registry
+- [x] **2.1** Create `ModItems.java` — item registration using `ResourceKey` pattern (1.21.2+ style), registers `POWER_MUSHROOM` with food properties (nutrition 4, alwaysEdible, stacksTo 16), added to Food & Drinks creative tab
+- [x] **2.2** Create `PowerMushroomItem.java` — extends `Item`, overrides `finishUsingItem` (skeleton that logs for now)
+- [x] **2.3** Call `ModItems.initialize()` from `MushroomMod.onInitialize()`
+- [x] **2.4** Add GameTest: verify `ModItems.POWER_MUSHROOM` is registered in the item registry
 
 **Verify:** `./gradlew build` passes, GameTest confirms item is registered.
 
