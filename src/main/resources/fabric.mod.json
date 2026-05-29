@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "mushroom-mod",
+	"version": "${version}",
+	"name": "Power Mushroom Mod",
+	"description": "Eat a mushroom to double your size, strength, and jump height until you take a hit!",
+	"authors": [
+		"Lee Campbell"
+	],
+	"license": "MIT",
+	"icon": "assets/mushroom-mod/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.leecampbell.mushroom.MushroomMod"
+		],
+		"client": [
+			"com.leecampbell.mushroom.client.MushroomModClient"
+		]
+	},
+	"mixins": [
+		"mushroom-mod.mixins.json",
+		{
+			"config": "mushroom-mod.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.2",
+		"minecraft": "~1.21.4",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
