@@ -16,9 +16,10 @@ echo "Tasks found: ${TASK_COUNT}"
 echo "Timeout per task: ${TIMEOUT}s"
 echo "==========================================="
 
-# Configure git identity for commits inside the container
-git config user.email "claude-agent@local"
-git config user.name "Claude Agent"
+# Configure git identity and safe directory for the container
+git config --global user.email "${GIT_USER_EMAIL:?GIT_USER_EMAIL is required}"
+git config --global user.name "${GIT_USER_NAME:?GIT_USER_NAME is required}"
+git config --global safe.directory /workspace
 
 for TASK_NUM in $(seq 1 "$TASK_COUNT"); do
   LOG_FILE="${LOG_DIR}/task-${TASK_NUM}.log"
@@ -60,13 +61,18 @@ Follow the Agent Workflow from the plan:
 
 Stop after creating the PR. Do not proceed to the next task."
 
+  # Stream JSON for live output, pipe through jq to extract readable text
+  # Full JSON log kept separately for debugging
   timeout "$TIMEOUT" claude \
     --dangerously-skip-permissions \
     --output-format stream-json \
     --verbose \
     --max-turns 50 \
     -p "$PROMPT" \
-    2>&1 | tee "$LOG_FILE" || true
+    2> "${LOG_FILE%.log}-stderr.log" \
+    | tee "${LOG_FILE%.log}-raw.json" \
+    | jq -rj 'select(.type == "assistant" and .message.content != null) | .message.content[] | select(.type == "text") | .text' \
+    | tee "$LOG_FILE" || true
 
   echo "--- Task ${TASK_NUM}/${TASK_COUNT} finished at $(date -Iseconds) ---"
 
