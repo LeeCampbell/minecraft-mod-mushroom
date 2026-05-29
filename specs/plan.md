@@ -76,9 +76,9 @@ Father-son team building their first Minecraft mod. Goal: a custom mushroom food
 
 ## Task 5: "Until Hit" Mechanic
 
-- [ ] **5.1** In `MushroomMod.onInitialize()`, register `ServerLivingEntityEvents.AFTER_DAMAGE` callback:
+- [x] **5.1** In `MushroomMod.onInitialize()`, register `ServerLivingEntityEvents.AFTER_DAMAGE` callback:
   - If entity is `ServerPlayer` AND `damageTaken > 0` AND `hasPower(player)` → `removePower(player)`
-- [ ] **5.2** Add GameTests:
+- [x] **5.2** Add GameTests:
   - Test that applying damage to a powered player removes the power
   - Test that a non-powered player taking damage does nothing (no error)
 
